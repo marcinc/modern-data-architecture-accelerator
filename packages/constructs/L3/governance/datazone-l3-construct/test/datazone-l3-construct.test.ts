@@ -1498,6 +1498,125 @@ describe('DataZone L3 Construct Tests', () => {
       template.hasResourceProperties('AWS::DataZone::PolicyGrant', { PolicyType: 'ADD_TO_PROJECT_MEMBER_POOL' });
     });
 
+    test('root and domain unit authorizations depend on the profiles of the principals they name', () => {
+      // Authorizations resolve a principal to its role ARN / SSO ID rather than the profile's
+      // attrId, so without an explicit dependency a grant can be created before the profile and
+      // fail with "Principal provided is not valid".
+      const props: DataZoneL3ConstructProps = {
+        roleHelper,
+        naming: testApp.naming,
+        lakeformationManageAccessRole: { arn: 'arn:test-partition:iam::123456789012:role/test-role' },
+        dataZoneDomains: {
+          'test-domain': {
+            description: 'Domain with root and domain unit authorizations',
+            dataAdminRole: { name: 'admin' },
+            singleSignOnType: 'DISABLED',
+            userAssignment: 'MANUAL',
+            users: { 'test-user': { iamRole: { name: 'test-user-role' } } },
+            authorizations: {
+              eligibleProjectMembers: { users: ['test-user'] },
+            },
+            domainUnits: {
+              unit1: {
+                description: 'Unit naming a user it is not owned by',
+                authorizations: {
+                  projectCreators: { users: ['test-user'] },
+                },
+              },
+            },
+          },
+        },
+      };
+
+      new DataZoneL3Construct(stack, 'test', props);
+      const template = Template.fromStack(stack);
+
+      const userProfiles = Object.entries(template.findResources('AWS::DataZone::UserProfile')).filter(([logicalId]) =>
+        logicalId.includes('usertestuser'),
+      );
+      expect(userProfiles).toHaveLength(1);
+      const [[profileId, profile]] = userProfiles;
+      const userIdentifier = JSON.stringify(profile.Properties.UserIdentifier);
+
+      const grantsNamingUser = Object.values(template.findResources('AWS::DataZone::PolicyGrant')).filter(
+        grant => JSON.stringify(grant.Properties.Principal?.User?.UserIdentifier) === userIdentifier,
+      );
+      const policyTypes = grantsNamingUser.map(grant => grant.Properties.PolicyType).sort();
+      expect(policyTypes).toEqual(['ADD_TO_PROJECT_MEMBER_POOL', 'CREATE_PROJECT']);
+      grantsNamingUser.forEach(grant => {
+        expect(grant.DependsOn).toEqual(expect.arrayContaining([profileId]));
+      });
+    });
+
+    test('root and domain unit authorizations depend on the account and data admin profiles', () => {
+      // An accountName principal resolves to the account's CDK role ARN, not to its CDK user
+      // profile's attrId, so it needs the same explicit dependency as users and groups. A grant can
+      // also name the data admin role by raw identifier, so the data admin profile is included too.
+      const crossAccountStack = new Stack(testApp, 'cross-account-stack', { env: { account: '123456789012' } });
+      const props: DataZoneL3ConstructProps = {
+        roleHelper,
+        naming: testApp.naming,
+        lakeformationManageAccessRole: { arn: 'arn:test-partition:iam::123456789012:role/test-role' },
+        crossAccountStacks: { '123456789012': { 'test-region': crossAccountStack } },
+        dataZoneDomains: {
+          'test-domain': {
+            description: 'Domain with authorizations naming an associated account',
+            dataAdminRole: { name: 'admin' },
+            singleSignOnType: 'DISABLED',
+            userAssignment: 'MANUAL',
+            associatedAccounts: {
+              acc1: {
+                account: '123456789012',
+                createCdkUser: true,
+                glueCatalogKmsKeyArn: 'arn:test-partition:kms:test-region:123456789012:key/test-key',
+              },
+            },
+            authorizationPolicies: {
+              'account-member-pool': {
+                policyType: 'ADD_TO_PROJECT_MEMBER_POOL',
+                principals: [{ accountName: 'acc1' }],
+              },
+            },
+            domainUnits: {
+              unit1: {
+                description: 'Unit naming an account it is not owned by',
+                authorizationPolicies: {
+                  'account-create-project': {
+                    policyType: 'CREATE_PROJECT',
+                    principals: [{ accountName: 'acc1' }],
+                  },
+                },
+              },
+            },
+          },
+        },
+      };
+
+      new DataZoneL3Construct(stack, 'test', props);
+      const template = Template.fromStack(stack);
+
+      const profileIdMatching = (fragment: string): string => {
+        const ids = Object.keys(template.findResources('AWS::DataZone::UserProfile')).filter(id =>
+          id.includes(fragment),
+        );
+        expect(ids).toHaveLength(1);
+        return ids[0];
+      };
+      const accountProfileId = profileIdMatching('acc1cdkuserprofile');
+      const dataAdminProfileId = profileIdMatching('admin');
+
+      const accountRoleArn =
+        'arn:test-partition:iam::123456789012:role/cdk-hnb659fds-cfn-exec-role-123456789012-test-region';
+      const grantsNamingAccount = Object.values(template.findResources('AWS::DataZone::PolicyGrant')).filter(
+        grant => grant.Properties.Principal?.User?.UserIdentifier === accountRoleArn,
+      );
+      const policyTypes = grantsNamingAccount.map(grant => grant.Properties.PolicyType).sort();
+      expect(policyTypes).toEqual(['ADD_TO_PROJECT_MEMBER_POOL', 'CREATE_PROJECT']);
+      grantsNamingAccount.forEach(grant => {
+        expect(grant.DependsOn).toEqual(expect.arrayContaining([accountProfileId, dataAdminProfileId]));
+      });
+    });
+
     test('authorizations on nested domain unit creates policies', () => {
       const props: DataZoneL3ConstructProps = {
         roleHelper,

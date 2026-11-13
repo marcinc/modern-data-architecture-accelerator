@@ -1364,6 +1364,15 @@
           }
         }
       },
+      "DependsOn": [
+        "datazonetestdomainadminuserprofile68332B36",
+        "datazonetestdomainassociatedaccountname1cdkuserprofile1F4DE3D5",
+        "datazonetestdomainassociatedaccountname2cdkuserprofile5DA1E974",
+        "datazonetestdomaingrouptestssogroup1F5BA8832",
+        "datazonetestdomaingrouptestssogroup2FC690F20",
+        "datazonetestdomainuseriamusername5E6BAE03",
+        "datazonetestdomainuserssousername95CF2FA0"
+      ],
       "Metadata": {
         "PolicyType": "CREATE_PROJECT",
         "PolicyName": "simple-create-project",
@@ -1398,6 +1407,15 @@
           }
         }
       },
+      "DependsOn": [
+        "datazonetestdomainadminuserprofile68332B36",
+        "datazonetestdomainassociatedaccountname1cdkuserprofile1F4DE3D5",
+        "datazonetestdomainassociatedaccountname2cdkuserprofile5DA1E974",
+        "datazonetestdomaingrouptestssogroup1F5BA8832",
+        "datazonetestdomaingrouptestssogroup2FC690F20",
+        "datazonetestdomainuseriamusername5E6BAE03",
+        "datazonetestdomainuserssousername95CF2FA0"
+      ],
       "Metadata": {
         "PolicyType": "CREATE_PROJECT",
         "PolicyName": "simple-create-project",
@@ -1432,6 +1450,15 @@
           }
         }
       },
+      "DependsOn": [
+        "datazonetestdomainadminuserprofile68332B36",
+        "datazonetestdomainassociatedaccountname1cdkuserprofile1F4DE3D5",
+        "datazonetestdomainassociatedaccountname2cdkuserprofile5DA1E974",
+        "datazonetestdomaingrouptestssogroup1F5BA8832",
+        "datazonetestdomaingrouptestssogroup2FC690F20",
+        "datazonetestdomainuseriamusername5E6BAE03",
+        "datazonetestdomainuserssousername95CF2FA0"
+      ],
       "Metadata": {
         "PolicyType": "ADD_TO_PROJECT_MEMBER_POOL",
         "PolicyName": "simple-project-membership",
@@ -1466,6 +1493,15 @@
           }
         }
       },
+      "DependsOn": [
+        "datazonetestdomainadminuserprofile68332B36",
+        "datazonetestdomainassociatedaccountname1cdkuserprofile1F4DE3D5",
+        "datazonetestdomainassociatedaccountname2cdkuserprofile5DA1E974",
+        "datazonetestdomaingrouptestssogroup1F5BA8832",
+        "datazonetestdomaingrouptestssogroup2FC690F20",
+        "datazonetestdomainuseriamusername5E6BAE03",
+        "datazonetestdomainuserssousername95CF2FA0"
+      ],
       "Metadata": {
         "PolicyType": "ADD_TO_PROJECT_MEMBER_POOL",
         "PolicyName": "simple-project-membership",
@@ -1500,6 +1536,15 @@
           }
         }
       },
+      "DependsOn": [
+        "datazonetestdomainadminuserprofile68332B36",
+        "datazonetestdomainassociatedaccountname1cdkuserprofile1F4DE3D5",
+        "datazonetestdomainassociatedaccountname2cdkuserprofile5DA1E974",
+        "datazonetestdomaingrouptestssogroup1F5BA8832",
+        "datazonetestdomaingrouptestssogroup2FC690F20",
+        "datazonetestdomainuseriamusername5E6BAE03",
+        "datazonetestdomainuserssousername95CF2FA0"
+      ],
       "Metadata": {
         "PolicyType": "CREATE_DOMAIN_UNIT",
         "PolicyName": "simple-create-domain-unit",
@@ -1534,6 +1579,15 @@
           }
         }
       },
+      "DependsOn": [
+        "datazonetestdomainadminuserprofile68332B36",
+        "datazonetestdomainassociatedaccountname1cdkuserprofile1F4DE3D5",
+        "datazonetestdomainassociatedaccountname2cdkuserprofile5DA1E974",
+        "datazonetestdomaingrouptestssogroup1F5BA8832",
+        "datazonetestdomaingrouptestssogroup2FC690F20",
+        "datazonetestdomainuseriamusername5E6BAE03",
+        "datazonetestdomainuserssousername95CF2FA0"
+      ],
       "Metadata": {
         "PolicyType": "CREATE_ENVIRONMENT",
         "PolicyName": "simple-create-environment",
@@ -1568,6 +1622,15 @@
           }
         }
       },
+      "DependsOn": [
+        "datazonetestdomainadminuserprofile68332B36",
+        "datazonetestdomainassociatedaccountname1cdkuserprofile1F4DE3D5",
+        "datazonetestdomainassociatedaccountname2cdkuserprofile5DA1E974",
+        "datazonetestdomaingrouptestssogroup1F5BA8832",
+        "datazonetestdomaingrouptestssogroup2FC690F20",
+        "datazonetestdomainuseriamusername5E6BAE03",
+        "datazonetestdomainuserssousername95CF2FA0"
+      ],
       "Metadata": {
         "PolicyType": "CREATE_PROJECT",
         "PolicyName": "root-create-project-policy",
@@ -1602,6 +1665,15 @@
           }
         }
       },
+      "DependsOn": [
+        "datazonetestdomainadminuserprofile68332B36",
+        "datazonetestdomainassociatedaccountname1cdkuserprofile1F4DE3D5",
+        "datazonetestdomainassociatedaccountname2cdkuserprofile5DA1E974",
+        "datazonetestdomaingrouptestssogroup1F5BA8832",
+        "datazonetestdomaingrouptestssogroup2FC690F20",
+        "datazonetestdomainuseriamusername5E6BAE03",
+        "datazonetestdomainuserssousername95CF2FA0"
+      ],
       "Metadata": {
         "PolicyType": "CREATE_PROJECT",
         "PolicyName": "root-create-project-policy",
@@ -1636,6 +1708,15 @@
           }
         }
       },
+      "DependsOn": [
+        "datazonetestdomainadminuserprofile68332B36",
+        "datazonetestdomainassociatedaccountname1cdkuserprofile1F4DE3D5",
+        "datazonetestdomainassociatedaccountname2cdkuserprofile5DA1E974",
+        "datazonetestdomaingrouptestssogroup1F5BA8832",
+        "datazonetestdomaingrouptestssogroup2FC690F20",
+        "datazonetestdomainuseriamusername5E6BAE03",
+        "datazonetestdomainuserssousername95CF2FA0"
+      ],
       "Metadata": {
         "PolicyType": "CREATE_DOMAIN_UNIT",
         "PolicyName": "root-create-domain-unit-policy",
@@ -1787,6 +1868,15 @@
           }
         }
       },
+      "DependsOn": [
+        "datazonetestdomainadminuserprofile68332B36",
+        "datazonetestdomainassociatedaccountname1cdkuserprofile1F4DE3D5",
+        "datazonetestdomainassociatedaccountname2cdkuserprofile5DA1E974",
+        "datazonetestdomaingrouptestssogroup1F5BA8832",
+        "datazonetestdomaingrouptestssogroup2FC690F20",
+        "datazonetestdomainuseriamusername5E6BAE03",
+        "datazonetestdomainuserssousername95CF2FA0"
+      ],
       "Metadata": {
         "PolicyType": "ADD_TO_PROJECT_MEMBER_POOL",
         "PolicyName": "owner-user-sso-user-name-project-membership",
@@ -1826,6 +1916,15 @@
           }
         }
       },
+      "DependsOn": [
+        "datazonetestdomainadminuserprofile68332B36",
+        "datazonetestdomainassociatedaccountname1cdkuserprofile1F4DE3D5",
+        "datazonetestdomainassociatedaccountname2cdkuserprofile5DA1E974",
+        "datazonetestdomaingrouptestssogroup1F5BA8832",
+        "datazonetestdomaingrouptestssogroup2FC690F20",
+        "datazonetestdomainuseriamusername5E6BAE03",
+        "datazonetestdomainuserssousername95CF2FA0"
+      ],
       "Metadata": {
         "PolicyType": "CREATE_PROJECT",
         "PolicyName": "owner-user-sso-user-name-create-project",
@@ -1865,6 +1964,15 @@
           }
         }
       },
+      "DependsOn": [
+        "datazonetestdomainadminuserprofile68332B36",
+        "datazonetestdomainassociatedaccountname1cdkuserprofile1F4DE3D5",
+        "datazonetestdomainassociatedaccountname2cdkuserprofile5DA1E974",
+        "datazonetestdomaingrouptestssogroup1F5BA8832",
+        "datazonetestdomaingrouptestssogroup2FC690F20",
+        "datazonetestdomainuseriamusername5E6BAE03",
+        "datazonetestdomainuserssousername95CF2FA0"
+      ],
       "Metadata": {
         "PolicyType": "ADD_TO_PROJECT_MEMBER_POOL",
         "PolicyName": "owner-account-associated-account-name2-project-membership",
@@ -1904,6 +2012,15 @@
           }
         }
       },
+      "DependsOn": [
+        "datazonetestdomainadminuserprofile68332B36",
+        "datazonetestdomainassociatedaccountname1cdkuserprofile1F4DE3D5",
+        "datazonetestdomainassociatedaccountname2cdkuserprofile5DA1E974",
+        "datazonetestdomaingrouptestssogroup1F5BA8832",
+        "datazonetestdomaingrouptestssogroup2FC690F20",
+        "datazonetestdomainuseriamusername5E6BAE03",
+        "datazonetestdomainuserssousername95CF2FA0"
+      ],
       "Metadata": {
         "PolicyType": "CREATE_PROJECT",
         "PolicyName": "owner-account-associated-account-name2-create-project",
@@ -1938,6 +2055,15 @@
           }
         }
       },
+      "DependsOn": [
+        "datazonetestdomainadminuserprofile68332B36",
+        "datazonetestdomainassociatedaccountname1cdkuserprofile1F4DE3D5",
+        "datazonetestdomainassociatedaccountname2cdkuserprofile5DA1E974",
+        "datazonetestdomaingrouptestssogroup1F5BA8832",
+        "datazonetestdomaingrouptestssogroup2FC690F20",
+        "datazonetestdomainuseriamusername5E6BAE03",
+        "datazonetestdomainuserssousername95CF2FA0"
+      ],
       "Metadata": {
         "PolicyType": "ADD_TO_PROJECT_MEMBER_POOL",
         "PolicyName": "allowed-users-groups",
@@ -1972,6 +2098,15 @@
           }
         }
       },
+      "DependsOn": [
+        "datazonetestdomainadminuserprofile68332B36",
+        "datazonetestdomainassociatedaccountname1cdkuserprofile1F4DE3D5",
+        "datazonetestdomainassociatedaccountname2cdkuserprofile5DA1E974",
+        "datazonetestdomaingrouptestssogroup1F5BA8832",
+        "datazonetestdomaingrouptestssogroup2FC690F20",
+        "datazonetestdomainuseriamusername5E6BAE03",
+        "datazonetestdomainuserssousername95CF2FA0"
+      ],
       "Metadata": {
         "PolicyType": "CREATE_PROJECT",
         "PolicyName": "simple-create-project",
@@ -2006,6 +2141,15 @@
           }
         }
       },
+      "DependsOn": [
+        "datazonetestdomainadminuserprofile68332B36",
+        "datazonetestdomainassociatedaccountname1cdkuserprofile1F4DE3D5",
+        "datazonetestdomainassociatedaccountname2cdkuserprofile5DA1E974",
+        "datazonetestdomaingrouptestssogroup1F5BA8832",
+        "datazonetestdomaingrouptestssogroup2FC690F20",
+        "datazonetestdomainuseriamusername5E6BAE03",
+        "datazonetestdomainuserssousername95CF2FA0"
+      ],
       "Metadata": {
         "PolicyType": "CREATE_PROJECT",
         "PolicyName": "simple-create-project",
@@ -2040,6 +2184,15 @@
           }
         }
       },
+      "DependsOn": [
+        "datazonetestdomainadminuserprofile68332B36",
+        "datazonetestdomainassociatedaccountname1cdkuserprofile1F4DE3D5",
+        "datazonetestdomainassociatedaccountname2cdkuserprofile5DA1E974",
+        "datazonetestdomaingrouptestssogroup1F5BA8832",
+        "datazonetestdomaingrouptestssogroup2FC690F20",
+        "datazonetestdomainuseriamusername5E6BAE03",
+        "datazonetestdomainuserssousername95CF2FA0"
+      ],
       "Metadata": {
         "PolicyType": "ADD_TO_PROJECT_MEMBER_POOL",
         "PolicyName": "simple-project-membership",
@@ -2074,6 +2227,15 @@
           }
         }
       },
+      "DependsOn": [
+        "datazonetestdomainadminuserprofile68332B36",
+        "datazonetestdomainassociatedaccountname1cdkuserprofile1F4DE3D5",
+        "datazonetestdomainassociatedaccountname2cdkuserprofile5DA1E974",
+        "datazonetestdomaingrouptestssogroup1F5BA8832",
+        "datazonetestdomaingrouptestssogroup2FC690F20",
+        "datazonetestdomainuseriamusername5E6BAE03",
+        "datazonetestdomainuserssousername95CF2FA0"
+      ],
       "Metadata": {
         "PolicyType": "CREATE_DOMAIN_UNIT",
         "PolicyName": "simple-create-domain-unit",
@@ -2108,6 +2270,15 @@
           }
         }
       },
+      "DependsOn": [
+        "datazonetestdomainadminuserprofile68332B36",
+        "datazonetestdomainassociatedaccountname1cdkuserprofile1F4DE3D5",
+        "datazonetestdomainassociatedaccountname2cdkuserprofile5DA1E974",
+        "datazonetestdomaingrouptestssogroup1F5BA8832",
+        "datazonetestdomaingrouptestssogroup2FC690F20",
+        "datazonetestdomainuseriamusername5E6BAE03",
+        "datazonetestdomainuserssousername95CF2FA0"
+      ],
       "Metadata": {
         "PolicyType": "CREATE_DOMAIN_UNIT",
         "PolicyName": "create-domain-unit-policy",
@@ -2143,6 +2314,15 @@
           }
         }
       },
+      "DependsOn": [
+        "datazonetestdomainadminuserprofile68332B36",
+        "datazonetestdomainassociatedaccountname1cdkuserprofile1F4DE3D5",
+        "datazonetestdomainassociatedaccountname2cdkuserprofile5DA1E974",
+        "datazonetestdomaingrouptestssogroup1F5BA8832",
+        "datazonetestdomaingrouptestssogroup2FC690F20",
+        "datazonetestdomainuseriamusername5E6BAE03",
+        "datazonetestdomainuserssousername95CF2FA0"
+      ],
       "Metadata": {
         "PolicyType": "CREATE_DOMAIN_UNIT",
         "PolicyName": "create-domain-unit-policy",
@@ -2178,6 +2358,15 @@
           }
         }
       },
+      "DependsOn": [
+        "datazonetestdomainadminuserprofile68332B36",
+        "datazonetestdomainassociatedaccountname1cdkuserprofile1F4DE3D5",
+        "datazonetestdomainassociatedaccountname2cdkuserprofile5DA1E974",
+        "datazonetestdomaingrouptestssogroup1F5BA8832",
+        "datazonetestdomaingrouptestssogroup2FC690F20",
+        "datazonetestdomainuseriamusername5E6BAE03",
+        "datazonetestdomainuserssousername95CF2FA0"
+      ],
       "Metadata": {
         "PolicyType": "CREATE_PROJECT",
         "PolicyName": "create-project-policy",
@@ -2212,6 +2401,15 @@
           }
         }
       },
+      "DependsOn": [
+        "datazonetestdomainadminuserprofile68332B36",
+        "datazonetestdomainassociatedaccountname1cdkuserprofile1F4DE3D5",
+        "datazonetestdomainassociatedaccountname2cdkuserprofile5DA1E974",
+        "datazonetestdomaingrouptestssogroup1F5BA8832",
+        "datazonetestdomaingrouptestssogroup2FC690F20",
+        "datazonetestdomainuseriamusername5E6BAE03",
+        "datazonetestdomainuserssousername95CF2FA0"
+      ],
       "Metadata": {
         "PolicyType": "CREATE_PROJECT",
         "PolicyName": "create-project-policy",
@@ -2246,6 +2444,15 @@
           }
         }
       },
+      "DependsOn": [
+        "datazonetestdomainadminuserprofile68332B36",
+        "datazonetestdomainassociatedaccountname1cdkuserprofile1F4DE3D5",
+        "datazonetestdomainassociatedaccountname2cdkuserprofile5DA1E974",
+        "datazonetestdomaingrouptestssogroup1F5BA8832",
+        "datazonetestdomaingrouptestssogroup2FC690F20",
+        "datazonetestdomainuseriamusername5E6BAE03",
+        "datazonetestdomainuserssousername95CF2FA0"
+      ],
       "Metadata": {
         "PolicyType": "CREATE_PROJECT",
         "PolicyName": "create-project-policy",
@@ -2280,6 +2487,15 @@
           }
         }
       },
+      "DependsOn": [
+        "datazonetestdomainadminuserprofile68332B36",
+        "datazonetestdomainassociatedaccountname1cdkuserprofile1F4DE3D5",
+        "datazonetestdomainassociatedaccountname2cdkuserprofile5DA1E974",
+        "datazonetestdomaingrouptestssogroup1F5BA8832",
+        "datazonetestdomaingrouptestssogroup2FC690F20",
+        "datazonetestdomainuseriamusername5E6BAE03",
+        "datazonetestdomainuserssousername95CF2FA0"
+      ],
       "Metadata": {
         "PolicyType": "CREATE_ASSET_TYPE",
         "PolicyName": "create-asset-type-policy",
@@ -2314,6 +2530,15 @@
           }
         }
       },
+      "DependsOn": [
+        "datazonetestdomainadminuserprofile68332B36",
+        "datazonetestdomainassociatedaccountname1cdkuserprofile1F4DE3D5",
+        "datazonetestdomainassociatedaccountname2cdkuserprofile5DA1E974",
+        "datazonetestdomaingrouptestssogroup1F5BA8832",
+        "datazonetestdomaingrouptestssogroup2FC690F20",
+        "datazonetestdomainuseriamusername5E6BAE03",
+        "datazonetestdomainuserssousername95CF2FA0"
+      ],
       "Metadata": {
         "PolicyType": "CREATE_ENVIRONMENT",
         "PolicyName": "create-environment-policy",
@@ -2348,6 +2573,15 @@
           }
         }
       },
+      "DependsOn": [
+        "datazonetestdomainadminuserprofile68332B36",
+        "datazonetestdomainassociatedaccountname1cdkuserprofile1F4DE3D5",
+        "datazonetestdomainassociatedaccountname2cdkuserprofile5DA1E974",
+        "datazonetestdomaingrouptestssogroup1F5BA8832",
+        "datazonetestdomaingrouptestssogroup2FC690F20",
+        "datazonetestdomainuseriamusername5E6BAE03",
+        "datazonetestdomainuserssousername95CF2FA0"
+      ],
       "Metadata": {
         "PolicyType": "CREATE_ENVIRONMENT_FROM_BLUEPRINT",
         "PolicyName": "create-env-from-blueprint-policy",
@@ -2380,6 +2614,15 @@
           }
         }
       },
+      "DependsOn": [
+        "datazonetestdomainadminuserprofile68332B36",
+        "datazonetestdomainassociatedaccountname1cdkuserprofile1F4DE3D5",
+        "datazonetestdomainassociatedaccountname2cdkuserprofile5DA1E974",
+        "datazonetestdomaingrouptestssogroup1F5BA8832",
+        "datazonetestdomaingrouptestssogroup2FC690F20",
+        "datazonetestdomainuseriamusername5E6BAE03",
+        "datazonetestdomainuserssousername95CF2FA0"
+      ],
       "Metadata": {
         "PolicyType": "CREATE_ENVIRONMENT_PROFILE",
         "PolicyName": "create-env-profile-policy",
@@ -2414,6 +2657,15 @@
           }
         }
       },
+      "DependsOn": [
+        "datazonetestdomainadminuserprofile68332B36",
+        "datazonetestdomainassociatedaccountname1cdkuserprofile1F4DE3D5",
+        "datazonetestdomainassociatedaccountname2cdkuserprofile5DA1E974",
+        "datazonetestdomaingrouptestssogroup1F5BA8832",
+        "datazonetestdomaingrouptestssogroup2FC690F20",
+        "datazonetestdomainuseriamusername5E6BAE03",
+        "datazonetestdomainuserssousername95CF2FA0"
+      ],
       "Metadata": {
         "PolicyType": "CREATE_FORM_TYPE",
         "PolicyName": "create-form-type-policy",
@@ -2448,6 +2700,15 @@
           }
         }
       },
+      "DependsOn": [
+        "datazonetestdomainadminuserprofile68332B36",
+        "datazonetestdomainassociatedaccountname1cdkuserprofile1F4DE3D5",
+        "datazonetestdomainassociatedaccountname2cdkuserprofile5DA1E974",
+        "datazonetestdomaingrouptestssogroup1F5BA8832",
+        "datazonetestdomaingrouptestssogroup2FC690F20",
+        "datazonetestdomainuseriamusername5E6BAE03",
+        "datazonetestdomainuserssousername95CF2FA0"
+      ],
       "Metadata": {
         "PolicyType": "ADD_TO_PROJECT_MEMBER_POOL",
         "PolicyName": "add-to-project-member-pool-policy",
@@ -2482,6 +2743,15 @@
           }
         }
       },
+      "DependsOn": [
+        "datazonetestdomainadminuserprofile68332B36",
+        "datazonetestdomainassociatedaccountname1cdkuserprofile1F4DE3D5",
+        "datazonetestdomainassociatedaccountname2cdkuserprofile5DA1E974",
+        "datazonetestdomaingrouptestssogroup1F5BA8832",
+        "datazonetestdomaingrouptestssogroup2FC690F20",
+        "datazonetestdomainuseriamusername5E6BAE03",
+        "datazonetestdomainuserssousername95CF2FA0"
+      ],
       "Metadata": {
         "PolicyType": "CREATE_PROJECT_FROM_PROJECT_PROFILE",
         "PolicyName": "create-project-from-profile-policy",
@@ -2516,6 +2786,15 @@
           }
         }
       },
+      "DependsOn": [
+        "datazonetestdomainadminuserprofile68332B36",
+        "datazonetestdomainassociatedaccountname1cdkuserprofile1F4DE3D5",
+        "datazonetestdomainassociatedaccountname2cdkuserprofile5DA1E974",
+        "datazonetestdomaingrouptestssogroup1F5BA8832",
+        "datazonetestdomaingrouptestssogroup2FC690F20",
+        "datazonetestdomainuseriamusername5E6BAE03",
+        "datazonetestdomainuserssousername95CF2FA0"
+      ],
       "Metadata": {
         "PolicyType": "DELEGATE_CREATE_ENVIRONMENT_PROFILE",
         "PolicyName": "delegate-create-env-profile-policy",
@@ -2550,6 +2829,15 @@
           }
         }
       },
+      "DependsOn": [
+        "datazonetestdomainadminuserprofile68332B36",
+        "datazonetestdomainassociatedaccountname1cdkuserprofile1F4DE3D5",
+        "datazonetestdomainassociatedaccountname2cdkuserprofile5DA1E974",
+        "datazonetestdomaingrouptestssogroup1F5BA8832",
+        "datazonetestdomaingrouptestssogroup2FC690F20",
+        "datazonetestdomainuseriamusername5E6BAE03",
+        "datazonetestdomainuserssousername95CF2FA0"
+      ],
       "Metadata": {
         "PolicyType": "OVERRIDE_DOMAIN_UNIT_OWNERS",
         "PolicyName": "override-domain-unit-owners-policy",
@@ -2584,6 +2872,15 @@
           }
         }
       },
+      "DependsOn": [
+        "datazonetestdomainadminuserprofile68332B36",
+        "datazonetestdomainassociatedaccountname1cdkuserprofile1F4DE3D5",
+        "datazonetestdomainassociatedaccountname2cdkuserprofile5DA1E974",
+        "datazonetestdomaingrouptestssogroup1F5BA8832",
+        "datazonetestdomaingrouptestssogroup2FC690F20",
+        "datazonetestdomainuseriamusername5E6BAE03",
+        "datazonetestdomainuserssousername95CF2FA0"
+      ],
       "Metadata": {
         "PolicyType": "OVERRIDE_PROJECT_OWNERS",
         "PolicyName": "override-project-owners-policy",
@@ -2732,6 +3029,15 @@
           }
         }
       },
+      "DependsOn": [
+        "datazonetestdomainadminuserprofile68332B36",
+        "datazonetestdomainassociatedaccountname1cdkuserprofile1F4DE3D5",
+        "datazonetestdomainassociatedaccountname2cdkuserprofile5DA1E974",
+        "datazonetestdomaingrouptestssogroup1F5BA8832",
+        "datazonetestdomaingrouptestssogroup2FC690F20",
+        "datazonetestdomainuseriamusername5E6BAE03",
+        "datazonetestdomainuserssousername95CF2FA0"
+      ],
       "Metadata": {
         "PolicyType": "ADD_TO_PROJECT_MEMBER_POOL",
         "PolicyName": "owner-group-test-sso-group2-project-membership",
@@ -2771,6 +3077,15 @@
           }
         }
       },
+      "DependsOn": [
+        "datazonetestdomainadminuserprofile68332B36",
+        "datazonetestdomainassociatedaccountname1cdkuserprofile1F4DE3D5",
+        "datazonetestdomainassociatedaccountname2cdkuserprofile5DA1E974",
+        "datazonetestdomaingrouptestssogroup1F5BA8832",
+        "datazonetestdomaingrouptestssogroup2FC690F20",
+        "datazonetestdomainuseriamusername5E6BAE03",
+        "datazonetestdomainuserssousername95CF2FA0"
+      ],
       "Metadata": {
         "PolicyType": "CREATE_PROJECT",
         "PolicyName": "owner-group-test-sso-group2-create-project",
@@ -2805,6 +3120,15 @@
           }
         }
       },
+      "DependsOn": [
+        "datazonetestdomainadminuserprofile68332B36",
+        "datazonetestdomainassociatedaccountname1cdkuserprofile1F4DE3D5",
+        "datazonetestdomainassociatedaccountname2cdkuserprofile5DA1E974",
+        "datazonetestdomaingrouptestssogroup1F5BA8832",
+        "datazonetestdomaingrouptestssogroup2FC690F20",
+        "datazonetestdomainuseriamusername5E6BAE03",
+        "datazonetestdomainuserssousername95CF2FA0"
+      ],
       "Metadata": {
         "PolicyType": "ADD_TO_PROJECT_MEMBER_POOL",
         "PolicyName": "allowed-users-groups",
@@ -2839,6 +3163,15 @@
           }
         }
       },
+      "DependsOn": [
+        "datazonetestdomainadminuserprofile68332B36",
+        "datazonetestdomainassociatedaccountname1cdkuserprofile1F4DE3D5",
+        "datazonetestdomainassociatedaccountname2cdkuserprofile5DA1E974",
+        "datazonetestdomaingrouptestssogroup1F5BA8832",
+        "datazonetestdomaingrouptestssogroup2FC690F20",
+        "datazonetestdomainuseriamusername5E6BAE03",
+        "datazonetestdomainuserssousername95CF2FA0"
+      ],
       "Metadata": {
         "PolicyType": "ADD_TO_PROJECT_MEMBER_POOL",
         "PolicyName": "allowed-users-groups",
@@ -2873,6 +3206,15 @@
           }
         }
       },
+      "DependsOn": [
+        "datazonetestdomainadminuserprofile68332B36",
+        "datazonetestdomainassociatedaccountname1cdkuserprofile1F4DE3D5",
+        "datazonetestdomainassociatedaccountname2cdkuserprofile5DA1E974",
+        "datazonetestdomaingrouptestssogroup1F5BA8832",
+        "datazonetestdomaingrouptestssogroup2FC690F20",
+        "datazonetestdomainuseriamusername5E6BAE03",
+        "datazonetestdomainuserssousername95CF2FA0"
+      ],
       "Metadata": {
         "PolicyType": "ADD_TO_PROJECT_MEMBER_POOL",
         "PolicyName": "simple-project-membership",
@@ -2907,6 +3249,15 @@
           }
         }
       },
+      "DependsOn": [
+        "datazonetestdomainadminuserprofile68332B36",
+        "datazonetestdomainassociatedaccountname1cdkuserprofile1F4DE3D5",
+        "datazonetestdomainassociatedaccountname2cdkuserprofile5DA1E974",
+        "datazonetestdomaingrouptestssogroup1F5BA8832",
+        "datazonetestdomaingrouptestssogroup2FC690F20",
+        "datazonetestdomainuseriamusername5E6BAE03",
+        "datazonetestdomainuserssousername95CF2FA0"
+      ],
       "Metadata": {
         "PolicyType": "ADD_TO_PROJECT_MEMBER_POOL",
         "PolicyName": "simple-project-membership",
@@ -2941,6 +3292,15 @@
           }
         }
       },
+      "DependsOn": [
+        "datazonetestdomainadminuserprofile68332B36",
+        "datazonetestdomainassociatedaccountname1cdkuserprofile1F4DE3D5",
+        "datazonetestdomainassociatedaccountname2cdkuserprofile5DA1E974",
+        "datazonetestdomaingrouptestssogroup1F5BA8832",
+        "datazonetestdomaingrouptestssogroup2FC690F20",
+        "datazonetestdomainuseriamusername5E6BAE03",
+        "datazonetestdomainuserssousername95CF2FA0"
+      ],
       "Metadata": {
         "PolicyType": "CREATE_ENVIRONMENT",
         "PolicyName": "simple-create-environment",
@@ -2986,6 +3346,15 @@
           }
         }
       },
+      "DependsOn": [
+        "datazonetestdomainadminuserprofile68332B36",
+        "datazonetestdomainassociatedaccountname1cdkuserprofile1F4DE3D5",
+        "datazonetestdomainassociatedaccountname2cdkuserprofile5DA1E974",
+        "datazonetestdomaingrouptestssogroup1F5BA8832",
+        "datazonetestdomaingrouptestssogroup2FC690F20",
+        "datazonetestdomainuseriamusername5E6BAE03",
+        "datazonetestdomainuserssousername95CF2FA0"
+      ],
       "Metadata": {
         "PolicyType": "CREATE_FORM_TYPE",
         "PolicyName": "create-form-type-project-policy",

@@ -320,7 +320,9 @@ export class CommonDomainHelper {
     return executionRole;
   }
 
-  // Creates user and group profiles, assigns owners to root domain unit
+  // Creates user and group profiles, assigns owners to root domain unit.
+  // otherPrincipalProfiles: user profiles created elsewhere in this stack (data admin, associated
+  // account CDK users) that root authorizations may name; the root grants wait for them too.
   public createDomainUsersGroupsOwners(
     scope: Construct,
     domainName: string,
@@ -328,6 +330,7 @@ export class CommonDomainHelper {
     domain: CfnDomain,
     domainVersion: 'V1' | 'V2',
     ownersCollector?: CfnOwner[],
+    otherPrincipalProfiles: CfnUserProfile[] = [],
   ): ProfileManagementConstruct {
     // Map users to their identifiers (IAM role ARN or SSO ID)
     const users = Object.fromEntries(
@@ -428,7 +431,7 @@ export class CommonDomainHelper {
       ...domainProps.authorizationPolicies,
     };
     if (rootAuthPolicies && Object.keys(rootAuthPolicies).length > 0) {
-      this.createAuthorizationPolicies(
+      const rootAuthorizations = this.createAuthorizationPolicies(
         'root-authorization-policies',
         domain,
         domain.attrId,
@@ -436,6 +439,16 @@ export class CommonDomainHelper {
         rootAuthPolicies,
         domainProps,
         domain.attrRootDomainUnitId,
+      );
+      // These grants name users, groups and accounts by their SSO ID or role ARN (resolved in
+      // createDataZoneAuthorizationConstruct), not by the profiles' attrId, so CloudFormation sees
+      // no dependency on the profiles. Without one, a grant can be created before its principal's
+      // profile and fail with "Principal provided is not valid". Depend on the profile resources,
+      // not on profileManagement: for V1 domains they are created outside it.
+      rootAuthorizations.node.addDependency(
+        ...Object.values(profileManagement.userProfiles),
+        ...Object.values(profileManagement.groupProfiles),
+        ...otherPrincipalProfiles,
       );
     }
 
@@ -940,6 +953,7 @@ export class CommonDomainHelper {
     userProfiles: {
       domainUsers: { [name: string]: CfnUserProfile };
       domainGroups: { [name: string]: CfnGroupProfile };
+      dataAdminUserProfile: CfnUserProfile;
       associatedAccountCdkUserProfiles: { [name: string]: CfnUserProfile };
     },
     domainUnits?: NamedDomainUnits,
@@ -1050,7 +1064,7 @@ export class CommonDomainHelper {
       };
       // Create authorization policies for this domain unit
       if (authPolicies && Object.keys(authPolicies).length > 0) {
-        this.createAuthorizationPolicies(
+        const domainUnitAuthorizations = this.createAuthorizationPolicies(
           'authorization-policies',
           domainUnit.construct,
           domainId,
@@ -1058,6 +1072,15 @@ export class CommonDomainHelper {
           authPolicies,
           domainProps,
           rootDomainUnitId,
+        );
+        // As for the root grants: users, groups and accounts named in this unit's authorizations are
+        // resolved to SSO IDs / role ARNs, and the domain unit depends only on its owners' profiles,
+        // so wait for every domain profile explicitly.
+        domainUnitAuthorizations.node.addDependency(
+          ...Object.values(userProfiles.domainUsers),
+          ...Object.values(userProfiles.domainGroups),
+          userProfiles.dataAdminUserProfile,
+          ...Object.values(userProfiles.associatedAccountCdkUserProfiles),
         );
       }
 
@@ -1266,6 +1289,7 @@ export class CommonDomainHelper {
       domain,
       domainVersion,
       ownersCollector,
+      [dataAdminUserProfile, ...Object.values(associatedAccountCdkUserProfiles ?? {})],
     );
 
     // Build cfn-exec role principal — the service auto-creates this user profile,
@@ -1332,6 +1356,7 @@ export class CommonDomainHelper {
       {
         domainUsers: profileManagement.userProfiles,
         domainGroups: profileManagement.groupProfiles,
+        dataAdminUserProfile: dataAdminUserProfile,
         associatedAccountCdkUserProfiles: associatedAccountCdkUserProfiles || {},
       },
       domainProps.domainUnits,
