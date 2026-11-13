@@ -1498,6 +1498,68 @@ describe('DataZone L3 Construct Tests', () => {
       template.hasResourceProperties('AWS::DataZone::PolicyGrant', { PolicyType: 'ADD_TO_PROJECT_MEMBER_POOL' });
     });
 
+    test('a group with iamRole creates an IAM role group profile usable in authorizations', () => {
+      const props: DataZoneL3ConstructProps = {
+        roleHelper,
+        naming: testApp.naming,
+        lakeformationManageAccessRole: { arn: 'arn:test-partition:iam::123456789012:role/test-role' },
+        dataZoneDomains: {
+          'test-domain': {
+            description: 'Domain with an IAM role group',
+            dataAdminRole: { name: 'admin' },
+            singleSignOnType: 'DISABLED',
+            userAssignment: 'MANUAL',
+            groups: { 'etl-role': { iamRole: { name: 'test-etl-role' } } },
+            authorizations: {
+              eligibleProjectMembers: { groups: ['etl-role'] },
+            },
+          },
+        },
+      };
+
+      new DataZoneL3Construct(stack, 'test', props);
+      const template = Template.fromStack(stack);
+
+      const groupProfiles = Object.entries(template.findResources('AWS::DataZone::GroupProfile'));
+      expect(groupProfiles).toHaveLength(1);
+      const [[profileId, profile]] = groupProfiles;
+      expect(profile.Properties.RolePrincipalArn).toEqual({ 'Fn::GetAtt': ['RoleResgroupetlrole', 'arn'] });
+      expect(profile.Properties.GroupIdentifier).toBeUndefined();
+
+      const grants = Object.values(template.findResources('AWS::DataZone::PolicyGrant')).filter(
+        grant =>
+          JSON.stringify(grant.Properties.Principal?.Group?.GroupIdentifier) ===
+          JSON.stringify(profile.Properties.RolePrincipalArn),
+      );
+      expect(grants).toHaveLength(1);
+      expect(grants[0].Properties.PolicyType).toBe('ADD_TO_PROJECT_MEMBER_POOL');
+      expect(grants[0].DependsOn).toEqual(expect.arrayContaining([profileId]));
+    });
+
+    test.each([
+      ['neither ssoId nor iamRole', {}],
+      ['both ssoId and iamRole', { ssoId: 'test-sso-group', iamRole: { name: 'test-etl-role' } }],
+    ])('a group with %s is rejected', (_, group) => {
+      const props: DataZoneL3ConstructProps = {
+        roleHelper,
+        naming: testApp.naming,
+        lakeformationManageAccessRole: { arn: 'arn:test-partition:iam::123456789012:role/test-role' },
+        dataZoneDomains: {
+          'test-domain': {
+            description: 'Domain with an invalid group',
+            dataAdminRole: { name: 'admin' },
+            singleSignOnType: 'DISABLED',
+            userAssignment: 'MANUAL',
+            groups: { 'bad-group': group },
+          },
+        },
+      };
+
+      expect(() => new DataZoneL3Construct(stack, 'test', props)).toThrow(
+        'Exactly one of ssoId or iamRole must be specified for group bad-group',
+      );
+    });
+
     test('root and domain unit authorizations depend on the profiles of the principals they name', () => {
       // Authorizations resolve a principal to its role ARN / SSO ID rather than the profile's
       // attrId, so without an explicit dependency a grant can be created before the profile and

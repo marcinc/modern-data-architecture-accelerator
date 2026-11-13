@@ -727,14 +727,15 @@
         "DataZoneGroup": {
             "additionalProperties": false,
             "properties": {
+                "iamRole": {
+                    "$ref": "#/definitions/MdaaRoleRef",
+                    "description": "IAM role to register as a group (an \"IAM role group profile\"). DataZone represents an IAM role\nthat acts as a project member — for example a Glue job's execution role that posts lineage or\ndata quality results — as a group profile, and otherwise creates that profile only on the\nrole's first DataZone call. Declaring it here creates the profile up front, so the role can be\nnamed in authorizations (e.g. eligibleProjectMembers.groups) and added to projects on a first\ndeploy. Mutually exclusive with ssoId.\n\nUse cases: Job/service execution roles as project members; Non-human principals in member pools\n\nAWS: DataZone group profile with RolePrincipalArn\n\nValidation: Optional; valid MdaaRoleRef; exactly one of ssoId or iamRole. The role must not\nalready have a group profile in the domain (CloudFormation cannot adopt one created by\nDataZone)."
+                },
                 "ssoId": {
-                    "description": "IAM Identity Center (SSO) group ID for group-based domain access.\nGroups are SSO-only; IAM role groups are not supported.\n\nUse cases: Team-based domain access; SSO group permissions; Collective governance\n\nAWS: DataZone SSO group profile linked to IAM Identity Center\n\nValidation: Required; valid SSO group ID; group must exist in SSO directory",
+                    "description": "IAM Identity Center (SSO) group ID for group-based domain access. Mutually exclusive with\niamRole.\n\nUse cases: Team-based domain access; SSO group permissions; Collective governance\n\nAWS: DataZone SSO group profile linked to IAM Identity Center\n\nValidation: Optional; valid SSO group ID; group must exist in SSO directory; exactly one of\nssoId or iamRole",
                     "type": "string"
                 }
             },
-            "required": [
-                "ssoId"
-            ],
             "type": "object"
         },
         "DataZoneUser": {

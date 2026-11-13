@@ -1242,25 +1242,51 @@ Validation: Optional; valid NamedDataZoneGroups
 | **Additional properties** | Not allowed                 |
 | **Defined in**            | #/definitions/DataZoneGroup |
 
-| Property                                                                    | Pattern | Type   | Deprecated | Definition | Title/Description                                                                                                                                                                                                                                                                                                                                                                           |
-| --------------------------------------------------------------------------- | ------- | ------ | ---------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| + [ssoId](#domains_additionalProperties_groups_additionalProperties_ssoId ) | No      | string | No         | -          | IAM Identity Center (SSO) group ID for group-based domain access.<br />Groups are SSO-only; IAM role groups are not supported.<br /><br />Use cases: Team-based domain access; SSO group permissions; Collective governance<br /><br />AWS: DataZone SSO group profile linked to IAM Identity Center<br /><br />Validation: Required; valid SSO group ID; group must exist in SSO directory |
+| Property                                                                        | Pattern | Type   | Deprecated | Definition                                                            | Title/Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| ------------------------------------------------------------------------------- | ------- | ------ | ---------- | --------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| - [iamRole](#domains_additionalProperties_groups_additionalProperties_iamRole ) | No      | object | No         | Same as [dataAdminRole](#domains_additionalProperties_dataAdminRole ) | IAM role to register as a group (an "IAM role group profile"). DataZone represents an IAM role<br />that acts as a project member — for example a Glue job's execution role that posts lineage or<br />data quality results — as a group profile, and otherwise creates that profile only on the<br />role's first DataZone call. Declaring it here creates the profile up front, so the role can be<br />named in authorizations (e.g. eligibleProjectMembers.groups) and added to projects on a first<br />deploy. Mutually exclusive with ssoId.<br /><br />Use cases: Job/service execution roles as project members; Non-human principals in member pools<br /><br />AWS: DataZone group profile with RolePrincipalArn<br /><br />Validation: Optional; valid MdaaRoleRef; exactly one of ssoId or iamRole. The role must not<br />already have a group profile in the domain (CloudFormation cannot adopt one created by<br />DataZone). |
+| - [ssoId](#domains_additionalProperties_groups_additionalProperties_ssoId )     | No      | string | No         | -                                                                     | IAM Identity Center (SSO) group ID for group-based domain access. Mutually exclusive with<br />iamRole.<br /><br />Use cases: Team-based domain access; SSO group permissions; Collective governance<br /><br />AWS: DataZone SSO group profile linked to IAM Identity Center<br /><br />Validation: Optional; valid SSO group ID; group must exist in SSO directory; exactly one of<br />ssoId or iamRole                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 
-###### <a name="domains_additionalProperties_groups_additionalProperties_ssoId"></a>1.1.8.1.1. Property `root > domains > additionalProperties > groups > additionalProperties > ssoId`
+###### <a name="domains_additionalProperties_groups_additionalProperties_iamRole"></a>1.1.8.1.1. Property `root > domains > additionalProperties > groups > additionalProperties > iamRole`
+
+|                           |                                                              |
+| ------------------------- | ------------------------------------------------------------ |
+| **Type**                  | `object`                                                     |
+| **Required**              | No                                                           |
+| **Additional properties** | Not allowed                                                  |
+| **Same definition as**    | [dataAdminRole](#domains_additionalProperties_dataAdminRole) |
+
+**Description:** IAM role to register as a group (an "IAM role group profile"). DataZone represents an IAM role
+that acts as a project member — for example a Glue job's execution role that posts lineage or
+data quality results — as a group profile, and otherwise creates that profile only on the
+role's first DataZone call. Declaring it here creates the profile up front, so the role can be
+named in authorizations (e.g. eligibleProjectMembers.groups) and added to projects on a first
+deploy. Mutually exclusive with ssoId.
+
+Use cases: Job/service execution roles as project members; Non-human principals in member pools
+
+AWS: DataZone group profile with RolePrincipalArn
+
+Validation: Optional; valid MdaaRoleRef; exactly one of ssoId or iamRole. The role must not
+already have a group profile in the domain (CloudFormation cannot adopt one created by
+DataZone).
+
+###### <a name="domains_additionalProperties_groups_additionalProperties_ssoId"></a>1.1.8.1.2. Property `root > domains > additionalProperties > groups > additionalProperties > ssoId`
 
 |              |          |
 | ------------ | -------- |
 | **Type**     | `string` |
-| **Required** | Yes      |
+| **Required** | No       |
 
-**Description:** IAM Identity Center (SSO) group ID for group-based domain access.
-Groups are SSO-only; IAM role groups are not supported.
+**Description:** IAM Identity Center (SSO) group ID for group-based domain access. Mutually exclusive with
+iamRole.
 
 Use cases: Team-based domain access; SSO group permissions; Collective governance
 
 AWS: DataZone SSO group profile linked to IAM Identity Center
 
-Validation: Required; valid SSO group ID; group must exist in SSO directory
+Validation: Optional; valid SSO group ID; group must exist in SSO directory; exactly one of
+ssoId or iamRole
 
 #### <a name="domains_additionalProperties_ownerAccounts"></a>1.1.9. Property `root > domains > additionalProperties > ownerAccounts`
 

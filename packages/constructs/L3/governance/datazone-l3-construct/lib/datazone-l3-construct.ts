@@ -42,19 +42,37 @@ export interface DataZoneUser {
   readonly ssoId?: string;
 }
 
-// SSO group identity for DataZone domain access.
+// Group identity for DataZone domain access — an SSO group or an IAM role.
 export interface DataZoneGroup {
   /**
-   * IAM Identity Center (SSO) group ID for group-based domain access.
-   * Groups are SSO-only; IAM role groups are not supported.
+   * IAM Identity Center (SSO) group ID for group-based domain access. Mutually exclusive with
+   * iamRole.
    *
    * Use cases: Team-based domain access; SSO group permissions; Collective governance
    *
    * AWS: DataZone SSO group profile linked to IAM Identity Center
    *
-   * Validation: Required; valid SSO group ID; group must exist in SSO directory
+   * Validation: Optional; valid SSO group ID; group must exist in SSO directory; exactly one of
+   * ssoId or iamRole
    */
-  readonly ssoId: string;
+  readonly ssoId?: string;
+  /**
+   * IAM role to register as a group (an "IAM role group profile"). DataZone represents an IAM role
+   * that acts as a project member — for example a Glue job's execution role that posts lineage or
+   * data quality results — as a group profile, and otherwise creates that profile only on the
+   * role's first DataZone call. Declaring it here creates the profile up front, so the role can be
+   * named in authorizations (e.g. eligibleProjectMembers.groups) and added to projects on a first
+   * deploy. Mutually exclusive with ssoId.
+   *
+   * Use cases: Job/service execution roles as project members; Non-human principals in member pools
+   *
+   * AWS: DataZone group profile with RolePrincipalArn
+   *
+   * Validation: Optional; valid MdaaRoleRef; exactly one of ssoId or iamRole. The role must not
+   * already have a group profile in the domain (CloudFormation cannot adopt one created by
+   * DataZone).
+   */
+  readonly iamRole?: MdaaRoleRef;
 }
 
 // Map of friendly group names to DataZone group definitions.

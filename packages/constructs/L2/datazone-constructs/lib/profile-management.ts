@@ -13,7 +13,10 @@ export interface UserConfig {
 }
 
 export interface GroupConfig {
-  readonly identifier: string;
+  /** SSO group ID. Set exactly one of identifier or rolePrincipalArn. */
+  readonly identifier?: string;
+  /** IAM role ARN, for an IAM role group profile. */
+  readonly rolePrincipalArn?: string;
 }
 
 export interface ProfileManagementConstructProps extends MdaaConstructProps {
@@ -58,6 +61,7 @@ export class ProfileManagementConstruct extends Construct {
         const groupProfileProps: CfnGroupProfileProps = {
           domainIdentifier: props.domainId,
           groupIdentifier: groupConfig.identifier,
+          rolePrincipalArn: groupConfig.rolePrincipalArn,
           status: 'ASSIGNED',
         };
         this.groupProfiles[groupName] = new CfnGroupProfile(

@@ -47,6 +47,7 @@ import { Construct } from 'constructs';
 import {
   AssociatedAccountProps,
   BaseDomainProps,
+  DataZoneGroup,
   DataZoneDomainProps,
   NamedDomainUnits,
   SageMakerDomainProps,
@@ -348,11 +349,13 @@ export class CommonDomainHelper {
       }),
     );
 
-    // Map groups to their SSO IDs
+    // Map groups to their SSO IDs, or to role ARNs for IAM role groups
     const groups = Object.fromEntries(
       Object.entries(domainProps.groups || {}).map(([groupName, groupProps]) => [
         groupName,
-        { identifier: groupProps.ssoId },
+        groupProps.iamRole
+          ? { rolePrincipalArn: this.resolveGroupIdentifier(groupName, groupProps) }
+          : { identifier: this.resolveGroupIdentifier(groupName, groupProps) },
       ]),
     );
 
@@ -1128,6 +1131,16 @@ export class CommonDomainHelper {
     }
   }
 
+  // Returns a group's SSO ID, or the ARN of its IAM role; exactly one of the two must be set
+  private resolveGroupIdentifier(groupName: string, groupProps: DataZoneGroup): string {
+    if (!groupProps.ssoId === !groupProps.iamRole) {
+      throw new Error(`Exactly one of ssoId or iamRole must be specified for group ${groupName}`);
+    }
+    return groupProps.iamRole
+      ? this.props.roleHelper.resolveRoleRefWithRefId(groupProps.iamRole, `group-${groupName}`).arn()
+      : (groupProps.ssoId as string);
+  }
+
   // Creates DataZone authorization construct with resolved user/group/account identifiers
   private createDataZoneAuthorizationConstruct(
     id: string,
@@ -1150,9 +1163,13 @@ export class CommonDomainHelper {
         .filter(([, identifier]) => identifier),
     );
 
-    // Resolve group identifiers from SSO IDs
+    // Resolve group identifiers from SSO IDs, or role ARNs for IAM role groups (DataZone accepts a
+    // role ARN as a policy grant's groupIdentifier and stores the grant under the role's profile)
     const groupIdentifiers: { [name: string]: string } = Object.fromEntries(
-      Object.entries(domainProps?.groups ?? {}).map(([groupName, groupProps]) => [groupName, groupProps.ssoId]),
+      Object.entries(domainProps?.groups ?? {}).map(([groupName, groupProps]) => [
+        groupName,
+        this.resolveGroupIdentifier(groupName, groupProps),
+      ]),
     );
 
     // Resolve account identifiers from CDK role ARNs
