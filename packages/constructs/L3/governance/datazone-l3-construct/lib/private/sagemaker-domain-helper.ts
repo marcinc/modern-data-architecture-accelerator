@@ -725,6 +725,11 @@ export class SageMakerDomainHelper extends CommonDomainHelper {
           'kms:EncryptionContext:aws:logs:arn': [
             `arn:${this.props.partition}:logs:${region}:${account}:log-group:datazone-*`,
             `arn:${this.props.partition}:logs:${region}:${account}:log-group:airflow-*`,
+            // SMUS serverless workflows (Amazon MWAA Serverless) log to
+            // /aws/mwaa-serverless/<domainId>-<projectId>/<workflowName>, encrypted with this key.
+            // Without this pattern CreateWorkflow fails with
+            // "AccessDeniedException: Access denied to logGroup or KmsKey".
+            `arn:${this.props.partition}:logs:${region}:${account}:log-group:/aws/mwaa-serverless/*`,
           ],
         },
       },

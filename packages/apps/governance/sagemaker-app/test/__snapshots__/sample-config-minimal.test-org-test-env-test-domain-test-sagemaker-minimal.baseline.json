@@ -1328,7 +1328,8 @@
                 "ArnEquals": {
                   "kms:EncryptionContext:aws:logs:arn": [
                     "arn:test-partition:logs:test-region:test-account:log-group:datazone-*",
-                    "arn:test-partition:logs:test-region:test-account:log-group:airflow-*"
+                    "arn:test-partition:logs:test-region:test-account:log-group:airflow-*",
+                    "arn:test-partition:logs:test-region:test-account:log-group:/aws/mwaa-serverless/*"
                   ]
                 }
               },
